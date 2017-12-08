@@ -1,0 +1,52 @@
+#include<iostream>
+#include<cmath>
+#include<vector>
+using namespace std;
+float fn(float n)
+{
+    return (n*n)-n-2;
+}
+int main()
+{
+
+    vector<float>x;
+    vector<float>y;
+
+    float Max=sqrt(((-1*-1)/1)-2*(-2/1));
+//    cout<<"Max: "<<Max<<endl;
+    float temp=fn(-Max);
+//    cout<<"temp: "<<temp<<endl;
+    float prev=-Max;
+    for(int i=-Max;i<Max;i=i+1)
+    {
+
+		if(fn(i)==0)cout<<"root: "<<i<<endl;
+        else if((fn(i)*fn(i+1))<0){x.push_back(i);
+        y.push_back(i+1);}
+//        prev=i;
+//        temp=fn(i);
+    }
+
+    int cnt=0;
+     for(int i=0;i<x.size();i++){
+          float x1=y[i],x2=x[i];
+    float x0=0;
+     float save=0,save2=0;
+
+    while(1)
+    {
+        save=x0;
+        float m=(fn(x1)*(x2-x1));
+        x0=x1-(m/(fn(x2)-fn(x1)));
+        cout<<"X0: "<<x0<<endl;
+        save2=x0;
+        cnt++;
+        if(fn(x0)==0){break;}
+        else if (abs((save2-save)/save2)<=.001)break;
+        else if((fn(x0)*fn(x1))<0)x2=x0;
+        else if((fn(x0)*fn(x2))<0)x1=x0;
+    }
+    cout<<"answer: "<<x0<<" cnt:"<<cnt<<endl;
+    cnt=0;
+}
+}

@@ -1,0 +1,36 @@
+#include<iostream>
+#include<stdio.h>
+#include<cmath>
+#define inf 0xfffffff
+typedef long long int ll;//1507034
+using namespace std;
+double fn(double x,double y){
+	return x+y;
+}
+
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    double x0=0,y0=1,h=.05;
+    double dely0=fn(x0,y0);
+    double y1=y0+dely0;
+    double x1=x0+h;
+    double save=0,save2=0;
+    double dely1=fn(x1,y1);
+    while(1){
+			save=dely1;
+		y1=y0+(dely1+dely0)*h/2;
+		dely1=fn(x1,y1);
+		save2=dely1;
+		if(abs((save-save2)/save2)<=.0001){
+			break;
+		}
+
+
+
+    }
+    cout<<y1<<endl;
+
+
+
+}

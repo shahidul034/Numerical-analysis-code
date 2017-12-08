@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cmath>
+typedef long long int ll;//1507034
+//freopen("in.txt","r",stdin);
+using namespace std;
+float fn(float n)
+{
+	return n*n-4*n-10;
+}
+
+int main()
+{
+	float x1=-1,x2=-2;
+	float x0=0;
+	float save=0,save2=0;
+	int cnt=0;
+	while(1)
+	{
+		cnt++;
+		x0=(x1+x2)/2.0;
+		 save2=x0;
+		if(fn(x0)==0)break;
+		else if(abs((save2-save)/save2)<=.001)break;
+		else if(fn(x0)*fn(x1)<0)x2=x0;
+		else x1=x0;
+		 save=x0;
+	}
+   cout<<x0<<"  "<<cnt;
+
+
+}
